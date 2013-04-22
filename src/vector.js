@@ -251,6 +251,14 @@ Sylvester.Vector.prototype = {
   setElements: function(els) {
     this.elements = (els.elements || els).slice();
     return this;
+  }	,
+
+  setElement: function(i, el) {
+    if (i < 1 || i > this.elements.length) {
+      return null;
+    };
+    this.elements[i-1] = el;
+    return this;
   }
 };
 

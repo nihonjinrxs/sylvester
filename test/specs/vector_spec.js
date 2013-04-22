@@ -175,4 +175,18 @@ JS.ENV.VectorSpec = JS.Test.describe("Vector", function() { with(this) {
     assert( $V([12,1]).rotate(Math.PI/2, [5,1]).eql([5,8]) )
     assert( Vector.i.rotate(-Math.PI/2, Sylvester.Line.create([10, 0, 100], Vector.k)).eql([10,9,0]) )
   }})
+
+  test("setElement", function() { with(this) {
+    var V = $V([0,3,4,5])
+    assertEqual( 6, V.setElement(1,6).e(1) )
+    assertEqual( 3, V.e(2) )
+    assertEqual( 4, V.e(3) )
+    assertEqual( 5, V.e(4) )
+    assertEqual( null, V.e(5) )
+    assertEqual( 6, V.e(1) )
+    assertEqual( 3, V.e(2) )
+    assertEqual( 7, V.setElement(3,7).e(3) )
+    assertEqual( 5, V.e(4) )
+    assertEqual( null, V.e(5) )
+  }})
 }})

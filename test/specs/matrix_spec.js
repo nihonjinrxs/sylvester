@@ -334,4 +334,26 @@ JS.ENV.MatrixSpec = JS.Test.describe("Matrix", function() { with(this) {
       [0,0,0,7]
     ]))
   }})
+
+  test("setElements", function() { with(this) {
+    var M = $M([
+      [0,3,4,8],
+      [3,9,7,3]
+    ])
+    assertEqual( '[0, 3, 4, 8]\n[3, 9, 7, 3]', M.inspect() )
+    assertEqual( '[1, 2, 3, 4]\n[5, 6, 7, 8]', M.setElements([[1,2,3,4],[5,6,7,8]]).inspect() )
+    assertEqual( '[3, 4, 6, 9]', M.setElements([[3,4,6,9]]).inspect() )
+    assertEqual( '[1]\n[3]\n[8]\n[4]', M.setElements([[1],[3],[8],[4]]).inspect() )
+    assertEqual( '[44]', M.setElements([[44]]).inspect() )
+    assertEqual( '[]', M.setElements([]).inspect() )
+  }})
+
+  test("setElement", function() { with(this) {
+    var M = $M([
+      [0,3,4,8],
+      [3,9,7,3]
+    ])
+    assertEqual( '[0, 3, 4, 8]\n[3, 9, 7, 3]', M.inspect() )
+    assertEqual( '[0, 3, 4, 8]\n[3, 4, 7, 3]', M.setElement(2,2,4).inspect() )
+  }})
 }})

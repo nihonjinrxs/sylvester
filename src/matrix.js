@@ -436,6 +436,14 @@ Sylvester.Matrix.prototype = {
       this.elements.push([elements[i]]);
     }
     return this;
+  },
+
+  setElement: function(i,j,element) {
+    if (i < 1 || i > this.elements.length || j < 1 || j > this.elements[0].length) { 
+      return null; 
+    }
+    this.elements[i-1][j-1] = element;
+    return this;
   }
 };
 
